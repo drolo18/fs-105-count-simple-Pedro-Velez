@@ -1,27 +1,38 @@
 import React from "react";
+import "../../styles/Home.css"
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+const numberSeparated = (number) => {
+	const units = number % 10;
+	const tens = Math.floor((number / 10) % 10)
 
-//create your first component
-const Home = () => {
+	return { units, tens }
+}
+
+const Home = (props) => {
+	const { units, tens } = numberSeparated(props.count)
+
+
 	return (
-		<div className="text-center">
-            
+		<>
+			<div className="container d-flex align-items-center justify-content-center">
+				<div className="d-flex justify-content-center" id="count">
+					<div>
+						<i className="fa-solid fa-stopwatch-20"></i>
+					</div>
+					<div>
+						{tens}
+					</div>
+					<div>
+						{units}
+					</div>
+				</div>
+			</div>
+			<div>
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+				<button className="alert" onClick={props.onReset}>reset</button>
+				<button className="alert" onClick={props.stop}>stop</button>
+			</div>
+		</>
 	);
 };
 
