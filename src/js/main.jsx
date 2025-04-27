@@ -48,6 +48,9 @@ const stop = () => {
         render();
       }, 1000);   
   }
+ if (count === 10){
+  alert ("La cuenta ha llegado a 10")
+ }
 
 
  root.render(<Home count={count} onReset={onReset}  stop={stop} start={start} />);
